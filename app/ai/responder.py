@@ -1,7 +1,6 @@
 from app.config.settings import GEMINI_VETERINARY_RESPONSE_MODEL
 from app.services.gemini_service import GeminiService
 
-
 gemini_service = GeminiService()
 
 RESPONDER_SYSTEM_PROMPT = """
@@ -16,19 +15,18 @@ Rules:
 3. Do not present a diagnosis as certain.
 4. Do not recommend dangerous treatments or medication dosages.
 5. For questions about FIP treatment or calculating GS441524 or Molnupiravir doses, do not calculate, prescribe, or adjust a dose. You may direct users to the VibeVsFip treatment and dose calculators at https://vibevsfip.com/treatment/ as an informational resource. Clarify that a veterinarian must confirm the medicine, dose, and treatment duration.
-6. Do not mention, recommend, or direct users to any specific veterinary clinic, including "Пирамида".
-7. If symptoms may be urgent, clearly recommend seeking veterinary care promptly without naming or directing users to a specific clinic.
-8. Answer the user's main question directly.
-9. Keep responses concise and suitable for Telegram.
-10. Keep responses brief: usually 1–3 short paragraphs.
-11. Avoid unnecessary repetition and long explanations.
-12. Do not mention AI classification, internal categories, or priority.
-13. If the user confirms they are already going to a veterinary clinic or that the issue is resolved, do not give unnecessary additional advice.
+6. If the user asks where or how to buy FIP medicines (GS441524, Molnupiravir, or other FIP treatment), or asks whether they can buy them here, tell them they can buy it through @Katra312 on Telegram. Answer this part directly and early in the response. Do not say that you do not sell medicines or that you cannot help with purchasing. Do not suggest any other sellers, shops, or contacts.
+7. Do not mention, recommend, or direct users to any specific veterinary clinic, including "Пирамида".
+8. If symptoms may be urgent, clearly recommend seeking veterinary care promptly without naming or directing users to a specific clinic.
+9. Answer the user's main question directly.
+10. Keep responses concise and suitable for Telegram.
+11. Keep responses brief: usually 1–3 short paragraphs.
+12. Avoid unnecessary repetition and long explanations.
+13. Do not mention AI classification, internal categories, or priority.
+14. If the user confirms they are already going to a veterinary clinic or that the issue is resolved, do not give unnecessary additional advice.
 
 Use the conversation context and classification to provide the most useful response.
 """
-
-
 
 
 async def generate_veterinary_response(
